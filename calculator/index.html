@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset id="calculator" class="calculator">
+      <legend>Basic Calculator</legend>
+      <div class="result" id="result"></div>
+
+      <button onclick="onClickHandler('1')">1</button>
+      <button onclick="onClickHandler('2')">2</button>
+      <button onclick="onClickHandler('3')">3</button>
+      <button onclick="onClickHandler('+')" class="operator">+</button>
+
+      <button onclick="onClickHandler('4')">4</button>
+      <button onclick="onClickHandler('5')">5</button>
+      <button onclick="onClickHandler('6')">6</button>
+      <button onclick="onClickHandler('-')" class="operator">-</button>
+
+      <button onclick="onClickHandler('7')">7</button>
+      <button onclick="onClickHandler('8')">8</button>
+      <button onclick="onClickHandler('9')">9</button>
+      <button onclick="onClickHandler('*')" class="operator">*</button>
+
+      <button onclick="onClickHandler('0')">0</button>
+      <button onclick="onClickHandler('.')">.</button>
+      <button onclick="onClickHandler('=')">=</button>
+      <button onclick="onClickHandler('/')" class="operator">/</button>
+
+      <button onclick="onClickHandler('Clear')" class="double">Clear</button>
+    </fieldset>
+  </body>
+</html>
+
+<style>
+  html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  html {
+    font-family: "Roboto";
+    font-weight: 100;
+  }
+  body {
+    display: flex;
+    margin-top: 1em;
+    font-size: 2em;
+  }
+  .calculator {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 300px;
+    border-color: white;
+    border-style: solid;
+  }
+  .result {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    background-color: #000;
+    min-height: 4em;
+    color: white;
+  }
+  .result > p {
+    padding: 0 1em;
+    text-align: right;
+    line-height: 2em;
+  }
+  button {
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    width: 25%;
+    background-color: #ccc;
+    line-height: 2em;
+    border-top: 0.01em solid white;
+    border-left: 0.01em solid white;
+  }
+  .operator {
+    background-color: #ff9500;
+    color: white;
+  }
+  .double {
+    width: 100%;
+  }
+  .grey {
+    background-color: #aaa;
+  }
+  .clicked {
+    background-color: darken(orange, 10%);
+  }
+</style>
+<script>
+  function onClickHandler(str) {
+    if (str == "Clear") {
+      const element = document.getElementById("result");
+      element.textContent = "";
+    } else if (str == "=") {
+      const element = document.getElementById("result");
+      const toCal = element.textContent;
+      element.textContent = "";
+    } else {
+      const textnode = document.createTextNode(str);
+      document.getElementById("result").appendChild(textnode);
+    }
+  }
+</script>
